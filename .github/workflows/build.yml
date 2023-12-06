@@ -25,6 +25,9 @@ jobs:
           mkdir build
           cd build
           cmake -GNinja ..
+      - name: Run build-wrapper
+        run: |
+          cd build
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja
       - name: Run sonar-scanner
         env:
