@@ -18,6 +18,8 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
+      - name: Install ninja-build tool       
+        uses: seanmiddleditch/gha-setup-ninja@v4
       - name: Run build-wrapper
         run: |
           mkdir build
