@@ -22,13 +22,7 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@v4
       - name: Run build-wrapper
         run: |
-          mkdir build
-          cd build
-          cmake -GNinja ..
-      - name: Run build-wrapper
-        run: |
-          cd build
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} gcc -O3 -g0 -s -Isource -Dd_m3HasWASI source/*.c platforms/app/main.c -lm -o wasm3
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
